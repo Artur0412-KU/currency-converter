@@ -11,6 +11,7 @@ export default function App() {
   if (!fontsLoaded) {
     return <ActivityIndicator size='large'/>
   }
+  
   return (
     <LinearGradient 
     colors={['#E7E7EE', '#F6F6F6']} style={styles.linearGradient}>

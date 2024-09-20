@@ -1,5 +1,4 @@
 import { StyleSheet } from "react-native";
-import { Roboto_400Regular } from "@expo-google-fonts/roboto";
 
 export const styles = StyleSheet.create({
     linearGradient: {
