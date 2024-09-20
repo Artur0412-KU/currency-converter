@@ -5,7 +5,7 @@
     "singleQuote": true,
     "overrides": [
         {
-            "files": ".ts",
+            "files": "*/",
             "options": {
                 "semi": false
             }
