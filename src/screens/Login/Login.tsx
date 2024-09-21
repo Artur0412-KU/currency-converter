@@ -1,14 +1,12 @@
 import React, { useState } from 'react'
-import { ActivityIndicator, Button, StyleSheet, Text, TextInput, View } from 'react-native'
+import { ActivityIndicator, Button, Pressable, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import { useFont } from '../../hooks/useFont';
 import { firebaseAuth } from '../../../config/config';
 import { LinearGradient } from 'expo-linear-gradient';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from '@firebase/auth';
-import { A } from '@expo/html-elements';
-import SignUp from '../SignUp/SignUp';
-import { Link } from 'expo-router';
+import { styles } from '../../styles/styles';
 
-export default function Login() {
+export default function Login({navigation}) {
    const fontsLoaded = useFont();
    const [email, setEmail] = useState('');
    const [password, setPassword] = useState('');
@@ -49,7 +47,9 @@ export default function Login() {
   
   return (
     <LinearGradient colors={['#E7E7EE', '#F6F6F6']} style={styles.linearGradient}>
+        
         <View style = {styles.inputContainer}>
+          <Text style = {styles.title}>Log In</Text>  
          <TextInput value = {email} style = {styles.input} 
           placeholder='Email' 
           autoCapitalize='none' 
@@ -61,12 +61,16 @@ export default function Login() {
           onChangeText={(text) => setPassword(text)}></TextInput>   
         </View>
         {loading ? <ActivityIndicator size='small' color = "#26278D"/> : 
-            <View>
-              <Button title='Sign In' onPress={() => signIn()}/>
-                <View>
-                   <Text>Don’t have an account?</Text> 
-                   <Link href='/SignUp' >Sign Up</Link>
-                </View>
+            <View style = {styles.buttonsContainer}>
+              <Pressable  onPress={() => signIn} style = {styles.button}>
+                <Text style = {styles.buttonText}>Log In</Text>
+              </Pressable>
+               <View style = {styles.buttonsFooter}>
+                    <Text style = {styles.footerText}>Don’t have an account?</Text> 
+                    <TouchableOpacity onPress={() => navigation.navigate('SignUp')} >
+                      <Text style = {styles.footerButton}>Sign Up</Text>
+                    </TouchableOpacity>
+               </View>
               
             </View>
         }
@@ -74,26 +78,4 @@ export default function Login() {
   )
 }
 
-export const styles = StyleSheet.create({
-    linearGradient: {
-      flex: 1,
-      alignItems: 'center',
-      justifyContent: 'center',
-      fontFamily: 'Roboto_400Regular',
-    },
-    inputContainer: {
-        flexDirection: 'column',
-        gap: 30,
-        width: '60%'
-    },
-    input: {
-       backgroundColor: 'white',
-       padding: 13,
-       paddingLeft: 24,
-       borderColor: '#E7E7EE',
-       borderWidth: 1,
-       borderRadius: 15,
-       color: '#A1A1A1',
-       fontFamily: 'Roboto_400Regular'
-    }
-  });
+
