@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import { ActivityIndicator, Button, Pressable, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
+import { ActivityIndicator, KeyboardAvoidingView, Pressable, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import { useFont } from '../../hooks/useFont';
 import { firebaseAuth } from '../../../config/config';
 import { LinearGradient } from 'expo-linear-gradient';
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from '@firebase/auth';
+import {signInWithEmailAndPassword } from '@firebase/auth';
 import { styles } from '../../styles/styles';
 
 export default function Login({navigation}) {
@@ -22,7 +22,6 @@ export default function Login({navigation}) {
     try {
        const response = await signInWithEmailAndPassword(auth, email, password);
        console.log(response);
-       alert('Sorry, check your email or password :)')
     } catch (error) {
        console.error(error);
        alert('Sign in failed: ' + error.message)
@@ -31,24 +30,10 @@ export default function Login({navigation}) {
     }
   }
 
-  const signUp = async () => {
-    setLoading(true);
-    try {
-       const response = await createUserWithEmailAndPassword(auth, email, password);
-       console.log(response);
-       alert('Sorry, check your email :)')
-    } catch (error) {
-       console.error(error);
-       alert('Registration failed: ' + error.message)
-    } finally {
-        setLoading(false);
-    }
-  }
-  
   return (
     <LinearGradient colors={['#E7E7EE', '#F6F6F6']} style={styles.linearGradient}>
-        
-        <View style = {styles.inputContainer}>
+       
+         <View style = {styles.inputContainer}>
           <Text style = {styles.title}>Log In</Text>  
          <TextInput value = {email} style = {styles.input} 
           placeholder='Email' 
@@ -62,7 +47,7 @@ export default function Login({navigation}) {
         </View>
         {loading ? <ActivityIndicator size='small' color = "#26278D"/> : 
             <View style = {styles.buttonsContainer}>
-              <Pressable  onPress={() => signIn} style = {styles.button}>
+              <Pressable  onPress={signIn} style = {styles.button}>
                 <Text style = {styles.buttonText}>Log In</Text>
               </Pressable>
                <View style = {styles.buttonsFooter}>
@@ -73,7 +58,8 @@ export default function Login({navigation}) {
                </View>
               
             </View>
-        }
+        } 
+        
     </LinearGradient>
   )
 }

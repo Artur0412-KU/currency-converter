@@ -28,7 +28,8 @@ export const styles = StyleSheet.create({
       borderWidth: 1,
       borderRadius: 15,
       color: '#A1A1A1',
-      fontFamily: 'Roboto_400Regular'
+      fontFamily: 'Roboto_400Regular',
+      width: 'auto'
     },
     buttonsContainer: {
       flexDirection: 'column',
