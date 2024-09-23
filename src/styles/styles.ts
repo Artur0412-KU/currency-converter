@@ -18,11 +18,11 @@ export const styles = StyleSheet.create({
       textAlign: 'center',
       flexDirection: 'column',
       gap: 30,
-      width: '60%'
+      width: '80%'
     },
     input: {
       backgroundColor: 'white',
-      padding: 13,
+      padding: 15,
       paddingLeft: 24,
       borderColor: '#E7E7EE',
       borderWidth: 1,
