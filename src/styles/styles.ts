@@ -66,3 +66,21 @@ export const styles = StyleSheet.create({
       fontFamily: 'Roboto_700Bold',
     }
 });
+
+export const homeStyles = StyleSheet.create({
+  logoutButton: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 700,
+  },
+  logoutButtonContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  logoutText: {
+    color: '#1F2261',
+    fontFamily: 'Roboto_400Regular',
+    fontSize: 16,
+    marginBottom: 10,
+  }
+})
