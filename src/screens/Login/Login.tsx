@@ -31,7 +31,7 @@ export default function Login({navigation}) {
   }
 
   return (
-    <LinearGradient colors={['#E7E7EE', '#F6F6F6']} style={styles.linearGradient}>
+    <LinearGradient colors={['#D2D2DB', '#F6F6F6']} style={styles.linearGradient}>
        
          <View style = {styles.inputContainer}>
           <Text style = {styles.title}>Log In</Text>  
